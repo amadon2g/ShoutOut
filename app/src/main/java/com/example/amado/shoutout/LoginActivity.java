@@ -3,6 +3,7 @@ package com.example.amado.shoutout;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -95,6 +96,12 @@ public class LoginActivity extends AppCompatActivity {
                 String uEmail = mUserEmail.getText().toString();
                 String pwd = mPasswordView.getText().toString();
 
+                final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+                        R.style.Theme_AppCompat_DayNight_Dialog);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Authenticating...");
+                progressDialog.show();
+
                 Response.Listener<String> stringListener = new Response.Listener<String>() {
                     /**
                      * Called when a response is received.
@@ -141,6 +148,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
 
         TextView regLink = (TextView) findViewById(R.id.signUpLink);
         regLink.setOnClickListener(new View.OnClickListener() {
