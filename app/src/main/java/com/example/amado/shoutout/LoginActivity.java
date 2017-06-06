@@ -83,6 +83,9 @@ public class LoginActivity extends AppCompatActivity {
         mUserEmail = (EditText) findViewById(R.id.userName);
         mPasswordView = (EditText) findViewById(R.id.userPassword);
 
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        LoginActivity.this.startActivity(intent);
+
         Button loginBtn = (Button) findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(new OnClickListener() {
             /**
@@ -93,60 +96,61 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String uEmail = mUserEmail.getText().toString();
-                String pwd = mPasswordView.getText().toString();
 
-                final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
-                        R.style.Theme_AppCompat_DayNight_Dialog);
-                progressDialog.setIndeterminate(true);
-                progressDialog.setMessage("Authenticating...");
-                progressDialog.show();
+//                String uEmail = mUserEmail.getText().toString();
+  //              String pwd = mPasswordView.getText().toString();
+//
+  //              final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+    //                    R.style.Theme_AppCompat_DayNight_Dialog);
+      //          progressDialog.setIndeterminate(true);
+        //        progressDialog.setMessage("Authenticating...");
+          //      progressDialog.show();
 
-                Response.Listener<String> stringListener = new Response.Listener<String>() {
+//                Response.Listener<String> stringListener = new Response.Listener<String>() {
                     /**
                      * Called when a response is received.
                      *
                      * @param response
                      */
-                    @Override
-                    public void onResponse(String response) {
-                        Log.i("JSON Parser", "Error parsing data " + response);
+  //                  @Override
+    //                public void onResponse(String response) {
+      //                  Log.i("JSON Parser", "Error parsing data " + response);
 
-                        try {
-                            JSONObject jResponse = new JSONObject(response);
-                            Boolean success = jResponse.getBoolean("success");
+        //                try {
+          //                  JSONObject jResponse = new JSONObject(response);
+            //                Boolean success = jResponse.getBoolean("success");
+//
+  //                          if(success) {
 
-                            if(success) {
+//                                String name = jResponse.getString("name");
+  //                              String email = jResponse.getString("email");
 
-                                String name = jResponse.getString("name");
-                                String email = jResponse.getString("email");
-
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                intent.putExtra("name", name);
-                                intent.putExtra("email", email);
+//                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+  //                              intent.putExtra("name", name);
+    //                            intent.putExtra("email", email);
 
 
-                                LoginActivity.this.startActivity(intent);
-                            }else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("Register failed")
-                                        .setNegativeButton("Retry", null)
-                                        .create()
-                                        .show();
-                            }
+//                                LoginActivity.this.startActivity(intent);
+  //                          }else {
+    //                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+      //                          builder.setMessage("Register failed")
+        //                                .setNegativeButton("Retry", null)
+          //                              .create()
+            //                            .show();
+              //              }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                //        } catch (JSONException e) {
+                  //          e.printStackTrace();
+                    //    }
+//
+  //                  }
+    //            };
 
-                    }
-                };
+      //          LoginHandler loginHandler = new LoginHandler(uEmail, pwd, stringListener);
+        //        RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
+          //      requestQueue.add(loginHandler);
 
-                LoginHandler loginHandler = new LoginHandler(uEmail, pwd, stringListener);
-                RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-                requestQueue.add(loginHandler);
-
-            }
+           }
         });
 
 
