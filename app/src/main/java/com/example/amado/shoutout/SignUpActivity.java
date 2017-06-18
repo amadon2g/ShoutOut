@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,9 +71,7 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
-                            System.out.println(response);
                             JSONObject jResponse = new JSONObject(response);
-                            System.out.println(response);
                             Boolean success = jResponse.getBoolean("success");
 
                             if(success) {

@@ -10,14 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.EditText;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DatePickerFragment extends DialogFragment
+public class FromDatePickerFragment extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
     @Override
@@ -29,7 +32,10 @@ public class DatePickerFragment extends DialogFragment
         int day = c.get(Calendar.DAY_OF_MONTH);
 
         // Create a new instance of DatePickerDialog and return it
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+        DatePickerDialog dpd = new DatePickerDialog(getActivity(), this, year, month, day);
+        DatePicker dp = dpd.getDatePicker();
+        dp.setMinDate(c.get(Calendar.DATE));
+        return dpd;
     }
 
 
@@ -43,5 +49,9 @@ public class DatePickerFragment extends DialogFragment
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
+        month += 1;
+        EditText tv = (EditText) getActivity().findViewById(R.id.startDate);
+        String stringOfDate = dayOfMonth + "/" + month + "/" + year;
+        tv.setText(stringOfDate);
     }
 }

@@ -9,18 +9,50 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="45dp"
+        android:fitsSystemWindows="false"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="match_parent" >
 
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorBackgroundFloating"
+                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+            <com.example.amado.shoutout.DelayAutoCompleteTextView
+                android:id="@+id/locationSearch"
+                android:layout_width="293dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownWidth="fill_parent"
+                android:imeOptions="flagNoExtractUi|actionSearch"
+                android:inputType="textCapSentences"
+                android:padding="10dp" />
+
+            <ImageView
+                android:id="@+id/geo_autocomplete_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/ic_menu_camera"
+                android:visibility="gone" />
+        </FrameLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include layout="@layout/content_main"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -28,6 +60,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </android.support.design.widget.CoordinatorLayout>
