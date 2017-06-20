@@ -287,7 +287,7 @@ public class EventsMapFragment extends Fragment implements OnMapReadyCallback, G
                                 LatLng mye = new LatLng(lat, lng);
                                 MarkerOptions markerOptions = new MarkerOptions();
                                 markerOptions.position(mye);
-                                markerOptions.title("Current Position");
+                                markerOptions.title(jResponse.getString("title"));
                                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                                 mCurrLocationMarker = mGoogleMap.addMarker(markerOptions);
 
